@@ -16,12 +16,14 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "testc": "tsc -p tsconfig.json",
-    "_lint": "tslint --project .",
-    "_lintfix": "tslint --fix --project .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue --ignore-path .gitignore .",
     "lintfix": "npm run lint -- --fix",
-    "analyze": "nuxt-ts build --analyze static",
-    "post-update": "yarn upgrade --latest"
+    "test:ava": "ava",
+    "test:ava:unit": "cross-env TEST=unit ava --config unit.config.js",
+    "test:ava:e2e": "cross-env TEST=e2e ava --config e2e.config.js",
+    "analyze": "npm run generate -- --analyze static",
+    "browserslist": "npx browserslist",
+    "clean": "shx rm -rf .nuxt && shx rm -rf dist && shx rm -rf node_modules/@nuxtjs/pwa/lib/icon/.cache/*"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,vue}": [
@@ -32,7 +34,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "echo TODO Enable test in pre-push hook && npm run test"
+      "pre-push": "npm run test -- --passWithNoTests"
     }
   },
   "engines": {
@@ -41,26 +43,50 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.2.10",
     "@nuxtjs/axios": "^5.8.0",
-    "@nuxtjs/pwa": "^3.0.0-beta.19",
+    "@nuxtjs/blog": "0.0.1-6",
+    "@nuxtjs/browserconfig": "0.0.12",
+    "@nuxtjs/google-adsense": "^1.1.3",
+    "@nuxtjs/ngrok": "^1.2.7",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/sitemap": "^2.0.1",
+    "@nuxtjs/amp": "^0.2.1",
     "dayjs": "^1.8.17",
     "nuxt": "^2.10.2",
+    "nuxt-axios-duplicate-blocker": "^1.1.1",
+    "nuxt-class-component": "^1.3.0",
+    "nuxt-google-optimize": "^0.5.4",
+    "nuxt-imagemin": "^1.0.0",
+    "nuxt-logrocket": "^1.2.5",
+    "nuxt-polyfill": "^1.0.3",
     "nuxt-property-decorator": "^2.5.0",
+    "nuxt-purgecss": "^0.2.1",
+    "nuxt-rfg-icon": "^0.6.4",
+    "nuxtent": "^1.4.1",
+    "vue-scrollto": "^2.17.1",
+    "vue-tour": "^1.1.0",
+    "vue-wait": "^1.4.8",
     "ts-node": "^8.5.4",
     "vuex": "^3.1.2",
-    "vuex-class": "^0.3.2"
+    "vuex-class": "^0.3.2",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.3.0",
     "@nuxt/typescript-build": "^0.3.10",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/eslint-config": "^2.0.0",
-    "@nuxtjs/eslint-module": "^1.1.0",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
+    "@nuxtjs/eslint-module": "^1.1.0",
+    "@nuxtjs/google-analytics": "^2.2.1",
+    "@nuxtjs/vuetify": "^1.9.0",
     "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@vue/test-utils": "^1.0.0-beta.30",
     "ava": "^2.4.0",
-    "@typescript-eslint/eslint-plugin": "^2.10.0",
-    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-module-resolver": "^3.2.0",
     "browser-env": "^3.3.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
@@ -73,35 +99,19 @@
     "eslint-plugin-nuxt": "^0.5.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.0.1",
+    "glob-all": "^3.1.0",
     "husky": "^3.1.0",
     "install-changed": "^1.1.0",
     "jest": "^24.9.0",
     "jest-serializer-vue": "^2.0.2",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "purgecss-webpack-plugin": "^1.6.0",
+    "shx": "^0.3.2",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "ts-jest": "^24.2.0",
     "vue-jest": "^3.0.5",
     "webpack-merge": "^4.2.2"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "json",
-      "vue"
-    ],
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/$1"
-    },
-    "transform": {
-      ".*\\.(vue)$": "vue-jest",
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ]
   }
 }
