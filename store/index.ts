@@ -8,7 +8,7 @@ export const state = (): RootState => ({
 })
 
 export const mutations: MutationTree<RootState> = {
-  setPeople (state: RootState, people: Person[]): void {
+  setPeople(state: RootState, people: Person[]): void {
     state.people = people
   }
 }
@@ -18,7 +18,7 @@ interface Actions<S, R> extends ActionTree<S, R> {
 }
 
 export const actions: Actions<RootState, RootState> = {
-  async nuxtServerInit ({ commit }, context) {
+  async nuxtServerInit({ commit }, context) {
     let people: Person[] = []
 
     // If you serve the site statically with `nuxt generate`, you can't use HTTP requests for local

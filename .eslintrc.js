@@ -108,11 +108,19 @@ module.exports = {
     "space-before-function-paren": [
       "error",
       {
-        "anonymous": "always",
-        "named": "always",
-        "asyncArrow": "always"
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "never"
       }
     ],
+    // "space-before-function-paren": [
+    //   "error",
+    //   {
+    //     "anonymous": "always",
+    //     "named": "always",
+    //     "asyncArrow": "always"
+    //   }
+    // ],
 
     'comma-dangle': 0,
 
@@ -126,7 +134,7 @@ module.exports = {
         singleline: { delimiter: 'comma', requireLast: false }
       }
     ],
-    '@typescript-eslint/no-empty-interface': 1,
+    '@typescript-eslint/no-empty-interface': ["warn"],
     '@typescript-eslint/no-use-before-define': 1,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/class-name-casing': 1,
