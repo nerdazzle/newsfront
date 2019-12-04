@@ -1,0 +1,9 @@
+# Based on from vuetify-todo-pwa
+> 1%
+last 2 versions
+not dead
+not ie <= 10
+
+# Controversial: A lot of people in Africa use op_mini due to slow connection speeds / older devices
+# However, for this app we are targeting the mainstream US user.
+not op_mini all

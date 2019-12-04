@@ -1,0 +1,49 @@
+{
+  // https://typescript.nuxtjs.org/guide/setup.html#configuration
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "esnext.asynciterable",
+      "dom"
+    ],
+    "esModuleInterop": true,
+      // Legacy Allows @Component decorators before `export default`
+      "experimentalDecorators": true,
+
+    "allowJs": true,
+    "sourceMap": true,
+    // this enables stricter inference for data properties on `this`
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    // Include modules imported with .json extension. May  json files as modules.  be careful, this may result in unnecessarily large bundles.
+    "resolveJsonModule": true,
+
+
+
+    "noImplicitAny": false,
+    // There is an issue with some UI libraries and the ‘NuxtApp’ Interface. This will handle that.  TODO: See if this is still necessary. (last checked 12/4/2019) https://codebrains.io/how-to-use-ssr-with-vue-js-nuxt-and-typescript/
+    "skipLibCheck": true,
+    // Don't use suppressImplicitAnyIndexErrors: https://medium.com/@_achou/dont-give-up-and-use-suppressimplicitanyindexerrors-ca6b208b9365
+    "suppressImplicitAnyIndexErrors": false,
+
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    },
+    "types": [
+      "@nuxt/types",
+      "@nuxtjs/axios",
+      "@types/node",
+      "@types/jest"
+    ]
+  }
+}

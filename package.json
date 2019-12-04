@@ -1,0 +1,107 @@
+{
+  "name": "newsfront",
+  "description": "A modern PWA / native app for newsfeeds, blogs, etc., built with Nuxt.js.",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
+    "dev-spa": "nuxt-ts dev --spa",
+    "build-spa": "nuxt-ts build --spa",
+    "start-spa": "nuxt-ts start --spa",
+    "generate-spa": "nuxt-ts generate",
+    "tsc": "tsc --showConfig",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "testc": "tsc -p tsconfig.json",
+    "_lint": "tslint --project .",
+    "_lintfix": "tslint --fix --project .",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue --ignore-path .gitignore .",
+    "lintfix": "npm run lint -- --fix",
+    "analyze": "nuxt-ts build --analyze static",
+    "post-update": "yarn upgrade --latest"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue --ignore-path .gitignore",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "echo TODO Enable test in pre-push hook && npm run test"
+    }
+  },
+  "engines": {
+    "node": ">=8.10"
+  },
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^0.2.10",
+    "@nuxtjs/axios": "^5.8.0",
+    "@nuxtjs/pwa": "^3.0.0-beta.19",
+    "dayjs": "^1.8.17",
+    "nuxt": "^2.10.2",
+    "nuxt-property-decorator": "^2.5.0",
+    "ts-node": "^8.5.4",
+    "vuex": "^3.1.2",
+    "vuex-class": "^0.3.2"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^0.3.10",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/eslint-config": "^2.0.0",
+    "@nuxtjs/eslint-module": "^1.1.0",
+    "@nuxtjs/eslint-config-typescript": "^1.0.0",
+    "@types/jest": "^24.0.23",
+    "@vue/test-utils": "^1.0.0-beta.30",
+    "ava": "^2.4.0",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-eslint": "^10.0.3",
+    "browser-env": "^3.3.0",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-config-vuetify": "^0.4.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-array-func": "3.1.3",
+    "eslint-plugin-ava": "^9.0.0",
+    "eslint-plugin-compat": "^3.3.0",
+    "eslint-plugin-nuxt": "^0.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.0.1",
+    "husky": "^3.1.0",
+    "install-changed": "^1.1.0",
+    "jest": "^24.9.0",
+    "jest-serializer-vue": "^2.0.2",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "ts-jest": "^24.2.0",
+    "vue-jest": "^3.0.5",
+    "webpack-merge": "^4.2.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1"
+    },
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ]
+  }
+}
